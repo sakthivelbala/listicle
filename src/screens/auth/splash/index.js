@@ -1,4 +1,3 @@
-import React from "react";
 import { Text, View, Image, Pressable } from "react-native";
 import Button from "../../../components/Button/index";
 import { styles } from "./styles";
