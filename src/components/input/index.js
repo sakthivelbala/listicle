@@ -1,13 +1,19 @@
 import { useState } from "react"
-import { Text, View, TextInput } from "react-native"
+import { Text, View, TextInput, Image, Pressable  } from "react-native"
 import { styles } from "./styles"
 
 const Input = (props) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(props.isPassword)
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const togglePasswordVisibile = () => {
+        setIsPasswordVisible(passwordVisibility=>!passwordVisibility);
+    }
     return <View style={styles.container}>
         <Text style={styles.label}>{props.label}</Text>
         <View style={styles.inputContainer}>
-            <TextInput secureTextEntry={props.isPassword} placeholder={props.placeholder} style={styles.input}/>
+            <TextInput secureTextEntry={props.isPassword && !isPasswordVisible} placeholder={props.placeholder} style={styles.input}/>
+            {props.isPassword && <Pressable onPress={togglePasswordVisibile}>
+                <Image style={styles.eye}  source={ isPasswordVisible ? require("../../assets/eye.png") : require("../../assets/eye_closed.png")} />
+            </Pressable>}
         </View>
     </View>
 }
