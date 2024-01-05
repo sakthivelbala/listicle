@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Text, View, Image, Pressable } from "react-native";
 import Button from "../../../components/Button/index";
 import { styles } from "./styles";
@@ -17,4 +18,4 @@ const Splash = () => {
     </View>
 }
 
-export default Splash;
+export default memo(Splash);

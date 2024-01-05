@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { Pressable, Text, Image, View } from "react-native"
 import { styles } from "./styles"
 
@@ -10,4 +11,4 @@ const AuthHeader = (props) => {
     </View>
 }
 
-export default AuthHeader
+export default memo(AuthHeader);

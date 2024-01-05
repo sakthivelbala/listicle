@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Text, View } from "react-native";
-import AuthHeader from "../../../components/AuthHeader/index";
-import Button from "../../../components/Button/index";
+import AuthHeader from "../../../components/AuthHeader";
+import Button from "../../../components/Button";
 import Checkbox from "../../../components/checkbox";
 import Input from "../../../components/input";
+import Separator from "../../../components/Separator";
 import { styles } from "./styles";
 
 const SignUp = () => {
@@ -18,10 +19,10 @@ const SignUp = () => {
             <Text style={styles.agreeText}>I agree with <Text style={styles.agreeTextBold}>Terms</Text> & <Text style={styles.agreeTextBold}>Privacy</Text></Text>
         </View>
         <Button style={styles.button} title="Sign Up" />
-
+        <Separator text="Or Sign Up with"/>
         
         <Text style={styles.agreeText}> Already have an Account? <Text style={styles.agreeTextBold}>Sign In</Text></Text>
     </View>
 }
 
-export default SignUp;
+export default memo(SignUp);

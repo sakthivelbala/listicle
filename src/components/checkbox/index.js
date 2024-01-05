@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { TouchableOpacity, View, Image } from "react-native"
 import { styles } from "./styles"
 
@@ -9,4 +10,4 @@ const Checkbox = (props) => {
     </TouchableOpacity>
 }
 
-export default Checkbox
+export default memo(Checkbox)

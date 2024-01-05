@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 import { Text, View, TextInput, Image, Pressable  } from "react-native"
 import { styles } from "./styles"
 
@@ -18,4 +18,4 @@ const Input = (props) => {
     </View>
 }
 
-export default Input
+export default memo(Input)

@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { TouchableOpacity, Text } from "react-native"
 import { styles } from "./styles"
 
@@ -7,4 +8,4 @@ const Button = (props) => {
     </TouchableOpacity>
 }
 
-export default Button
+export default memo(Button)
