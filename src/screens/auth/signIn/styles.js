@@ -9,17 +9,15 @@ export const styles = StyleSheet.create({
         flexDirection : 'row',
         alignItems : 'center'
     },
-    agreeText : {
-        color: BLUE,
-        marginHorizontal : 10
-    },
-    agreeTextBold : {
-        fontWeight : 'bold'
-    },
     button : {
         marginVertical : 20
     },
     footerText : {
+        color: BLUE,
+        marginHorizontal : 10,
         textAlign : 'center'
-    }
+    },
+    footerTextBold : {
+        fontWeight : 'bold'
+    },
 })
