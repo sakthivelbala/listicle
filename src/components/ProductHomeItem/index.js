@@ -1,4 +1,5 @@
-import { View, Image, Text, Pressable } from 'react-native'
+import { memo } from 'react'
+import { Image, Text, Pressable } from 'react-native'
 import { styles } from './styles';
 
 const ProductHomeItem = (props) => {
@@ -9,4 +10,4 @@ const ProductHomeItem = (props) => {
     </Pressable>
 }
 
-export default ProductHomeItem;
+export default memo(ProductHomeItem);

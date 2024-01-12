@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { View, Image, Text, Pressable } from 'react-native'
 import { BLACK } from '../../utils/colors';
 import { styles } from './styles';
@@ -11,4 +12,4 @@ const CategoryBox = (props) => {
     </Pressable>
 }
 
-export default CategoryBox;
+export default memo(CategoryBox);

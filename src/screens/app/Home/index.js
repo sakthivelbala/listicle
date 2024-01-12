@@ -8,7 +8,7 @@ import CategoryBox from '../../../components/CategoryBox';
 import { products } from '../../../data/Products';
 import ProductHomeItem from '../../../components/ProductHomeItem';
 
-const Home = () => {
+const Home = (props) => {
     const[selectedCategory, setSelectedCategory] = useState()
     const[keyword, setKeyword] = useState()
     const[filteredProducts, setFilteredProducts] = useState(products)
@@ -27,7 +27,7 @@ const Home = () => {
                 <FlatList showsHorizontalScrollIndicator={false} style={styles.list} horizontal data={categories} keyExtractor={item => item.id}
                     renderItem={({ item, index }) => <CategoryBox title={item.title} image={item.image} isFirst={index === 0} onPress={()=>{setSelectedCategory(item)}} isSelected={item.id==selectedCategory?.id} />} />
                 <FlatList showsVerticalScrollIndicator={false} style={styles.productList} data={filteredProducts} numColumns={2} keyExtractor={item => item.id}
-                    renderItem={({ item }) => <ProductHomeItem title={item.title} image={item.image} price={item.price} />}
+                    renderItem={({ item }) => <ProductHomeItem title={item.title} image={item.image} price={item.price} onPress={()=>{props.navigation.navigate("ProductDetails", {item})}}/>}
                     ListFooterComponent={<View style={{ height: 300 }} />} />
             </View>
         </SafeAreaView>

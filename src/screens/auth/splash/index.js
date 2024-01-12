@@ -12,7 +12,9 @@ const Splash = (props) => {
             <Text style={[styles.title, styles.innerTitle]}>All you need</Text>
             <Text style={styles.title}>Here!</Text>
         </View>
-        <Button onPress={()=>props.navigation.navigate("SignUp")} title="Sign Up"/>
+        <View style={{width : '100%', flexDirection : 'row'}}>
+            <Button onPress={()=>props.navigation.navigate("SignUp")} title="Sign Up"/>
+        </View>
         <Pressable hitStop={20} onPress={()=>props.navigation.navigate("SignIn")}>
             <Text  style={styles.footerText}>Sign In</Text>
         </Pressable>

@@ -1,18 +1,17 @@
 import { memo } from 'react'
-import { View, FlatList, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../../../components/Header';
 import { products } from '../../../data/Products';
 import FavoriteItem from '../../../components/FavoriteItem';
-import ProductHomeItem from '../../../components/ProductHomeItem';
 
-const Favorites = () => {
+const Favorites = (props) => {
     return (
         <SafeAreaView>
             <Header title="Favorites" />
-            <FlatList data={products} keyExtractor={item => item.id}
-                renderItem={({ item }) => <FavoriteItem title={item.title} image={item.image} price={item.price} />} />
+            <FlatList showsVerticalScrollIndicator={false} data={products} keyExtractor={item => item.id}
+                renderItem={({ item }) => <FavoriteItem title={item.title} image={item.image} price={item.price} onPress={()=>{props.navigation.navigate("ProductDetails", {item})}} />} />
         </SafeAreaView>
     )
 }

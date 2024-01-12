@@ -14,6 +14,7 @@ import Home from "./screens/app/Home";
 import Favorites from "./screens/app/Favorites";
 import Profile from "./screens/app/Profile";
 import {styles} from './styles'
+import ProductDetails from "./screens/app/ProductDetails";
 
 const App = () =>{
 
@@ -49,6 +50,7 @@ const App = () =>{
               <Tab.Screen name="Favorites" component={Favorites} options={{tabBarIcon:({focused})=><Image style={styles.icon} source={focused?require('./assets/tabs/bookmark_active.png'):require('./assets/tabs/bookmark.png')}/>}}/>
               <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon:({focused})=><Image style={styles.icon} source={focused?require('./assets/tabs/profile_active.png'):require('./assets/tabs/profile.png')}/>}}/>
             </Tab.Navigator>} />
+          <Stack.Screen name="ProductDetails" component={ProductDetails}/>
         </> :
         <>
           <Stack.Screen name="Splash" component={Splash} />
