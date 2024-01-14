@@ -9,7 +9,7 @@ const FavoriteItem = (props) => {
             <Text style={styles.title}>{props.title}</Text>
             <Text style={styles.price}>{props.price}</Text>
         </View>
-        <Image style={styles.close} source={require('../../assets/close.png')}/>
+        <Image style={styles.close} source={props.isDelete ? require('../../assets/delete.png') : require('../../assets/close.png')}/>
     </Pressable>
 }
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Image } from "react-native";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import Config from "react-native-config";
@@ -13,10 +13,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./screens/app/Home";
 import Favorites from "./screens/app/Favorites";
 import Profile from "./screens/app/Profile";
-import {styles} from './styles'
+import { styles } from './styles'
 import ProductDetails from "./screens/app/ProductDetails";
+import Settings from "./screens/app/Settings";
+import Listings from "./screens/app/Listings";
+import CreateList from "./screens/app/CreateList";
 
-const App = () =>{
+const App = () => {
 
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -24,8 +27,8 @@ const App = () =>{
   const isSignedIn = true;
 
   const theme = {
-    colors : {
-      background : WHITE
+    colors: {
+      background: WHITE
     }
   }
 
@@ -38,29 +41,36 @@ const App = () =>{
       accountName: 'Listicle-Android', // [Android] specifies an account name on the device that should be used
     });
   }, [])
-  
+
 
   return <SafeAreaProvider>
     <NavigationContainer theme={theme}>
-      <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isSignedIn ?
-        <>
-          <Stack.Screen name="Tabs" children={()=><Tab.Navigator screenOptions={{headerShown:false, tabBarShowLabel: false, tabBarStyle : {borderTopColor : LIGHT_GREY, backgroundColor : WHITE}}}>
-              <Tab.Screen name="Home" component={Home} options={{tabBarIcon:({focused})=><Image style={styles.icon} source={focused?require('./assets/tabs/home_active.png'):require('./assets/tabs/home.png')}/>}}/>
-              <Tab.Screen name="Favorites" component={Favorites} options={{tabBarIcon:({focused})=><Image style={styles.icon} source={focused?require('./assets/tabs/bookmark_active.png'):require('./assets/tabs/bookmark.png')}/>}}/>
-              <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon:({focused})=><Image style={styles.icon} source={focused?require('./assets/tabs/profile_active.png'):require('./assets/tabs/profile.png')}/>}}/>
+          <>
+            <Stack.Screen name="Tabs" children={() => <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false, tabBarStyle: { borderTopColor: LIGHT_GREY, backgroundColor: WHITE } }}>
+              <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ focused }) => <Image style={styles.icon} source={focused ? require('./assets/tabs/home_active.png') : require('./assets/tabs/home.png')} /> }} />
+              <Tab.Screen name="Favorites" component={Favorites} options={{ tabBarIcon: ({ focused }) => <Image style={styles.icon} source={focused ? require('./assets/tabs/bookmark_active.png') : require('./assets/tabs/bookmark.png')} /> }} />
+              <Tab.Screen name="Profile" options={{ tabBarIcon: ({ focused }) => <Image style={styles.icon} source={focused ? require('./assets/tabs/profile_active.png') : require('./assets/tabs/profile.png')} /> }}
+                children={() => <Stack.Navigator screenOptions={{ headerShown: false }}>
+                  <Stack.Screen name="ProfileView" component={Profile} />
+                  <Stack.Screen name="Listings" component={Listings} />
+                  <Stack.Screen name="Settings" component={Settings} />
+                  <Stack.Screen name="CreateList" component={CreateList} />
+                </Stack.Navigator>} />
             </Tab.Navigator>} />
-          <Stack.Screen name="ProductDetails" component={ProductDetails}/>
-        </> :
-        <>
-          <Stack.Screen name="Splash" component={Splash} />
-          <Stack.Screen name="SignIn" component={signIn} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-        </>
+            <Stack.Screen name="ProductDetails" component={ProductDetails} />
+
+          </> :
+          <>
+            <Stack.Screen name="Splash" component={Splash} />
+            <Stack.Screen name="SignIn" component={signIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+          </>
         }
       </Stack.Navigator>
     </NavigationContainer>
-  </SafeAreaProvider> 
+  </SafeAreaProvider>
 }
 
 export default App;

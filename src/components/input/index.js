@@ -10,7 +10,7 @@ const Input = (props) => {
     return <View style={styles.container}>
         <Text style={styles.label}>{props.label}</Text>
         <View style={styles.inputContainer}>
-            <TextInput value={props.value} onChangeText={props.onChangeText} secureTextEntry={props.isPassword && !isPasswordVisible} placeholder={props.placeholder} style={styles.input}/>
+            <TextInput value={props.value} onChangeText={props.onChangeText} secureTextEntry={props.isPassword && !isPasswordVisible} placeholder={props.placeholder} style={[styles.input, props.style ? props.style : {}]} multiline={props.multiline}/>
             {props.isPassword && <Pressable onPress={togglePasswordVisibile}>
                 <Image style={styles.eye}  source={ isPasswordVisible ? require("../../assets/eye.png") : require("../../assets/eye_closed.png")} />
             </Pressable>}
